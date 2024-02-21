@@ -1,0 +1,20 @@
+name: Learning GitActions
+
+on:
+    push:
+        branches:
+            - learning
+
+jobs:
+    publishing:
+    
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Publish Image
+              uses: mr-smithers-excellent/docker-build-push@v
+              with:
+                image: deenath/prison-break-api
+                registry: docker.io
+                username: ${{ secrets.DOCKER_USERNAME }}
+                password: ${{ secrets.DOCKER_PASSWORD }}
